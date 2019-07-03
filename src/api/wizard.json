@@ -35,7 +35,22 @@
           "type": "Result",
           "show": { "field": "onlyResidence", "operator": "eq", "value": false },
           "heading": "💃 Dekker ikke 🕺",
-          "lead": "<p>yo. you can use <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">dem linkz</a></p><p>Et avsnitt til her</p>"
+          "lead": "<p>yo. you can use <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">dem linkz</a></p><p>Et avsnitt til her</p>",
+          "children": [
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Viktig informasjon",
+                  "text": "<p>Viktig informasjon og sånt.</p>"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "typeBolig",
