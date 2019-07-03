@@ -1,0 +1,489 @@
+{
+  "meta": {
+    "title": "DigiTEK - enebolig og fritidsbolig",
+    "footer": "Pilot på regelveiviser for deg som skal bygge enebolig eller fritidsbolig"
+  },
+  "schema": [
+    {
+      "id": "about",
+      "type": "Page",
+      "heading": "Om boligen",
+      "children": [
+        {
+          "id": "onlyResidence",
+          "property": "onlyResidence",
+          "type": "Radio",
+          "heading": "Skal bygningen <u>kun</u> brukes som bolig?",
+          "text": "<p>Veiviseren dekker bare helårsboliger og fritidsboliger. Det gjelder andre byggtekniske krav hvis bygningen også skal brukes til noe annet, for eksempel næringsvirksomhet.</p>",
+          "options": [
+            {
+              "id": "onlyResidence.yes",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "onlyResidence.no",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "dekkerIkkeResult",
+          "type": "Result",
+          "show": { "field": "onlyResidence", "operator": "eq", "value": false },
+          "heading": "💃 Dekker ikke 🕺",
+          "lead": "<p>yo. you can use <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">dem linkz</a></p><p>Et avsnitt til her</p>"
+        },
+        {
+          "id": "typeBolig",
+          "property": "typeBolig",
+          "type": "Radio",
+          "show": { "field": "onlyResidence", "operator": "required" },
+          "heading": "Hva slags type bolig skal det være?",
+          "text": "<p>Det gjelder ulike regler for helårsboliger og fritidsboliger. Veiviseren dekker ikke omsorgsboliger eller andre spesielt tilrettelagte boliger.</p>",
+          "options": [
+            {
+              "id": "typeBolig.helårsbolig",
+              "type": "Answer",
+              "heading": "Helårsbolig",
+              "value": "helårsbolig"
+            },
+            {
+              "id": "typeBolig.fritidsbolig",
+              "type": "Answer",
+              "heading": "Fritidsbolig",
+              "value": "fritidsbolig"
+            },
+            {
+              "id": "typeBolig.omsorgsbolig",
+              "type": "Answer",
+              "heading": "Omsorgsbolig eller annen spesielt tilrettelagt bolig",
+              "value": "omsorgsbolig"
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "dekkerIkkeResult",
+          "show": { "field": "typeBolig", "operator": "eq", "value": "omsorgsbolig" }
+        },
+        {
+          "id": "boenheter",
+          "property": "boenheter",
+          "type": "Radio",
+          "show": { "field": "typeBolig", "operator": "required" },
+          "heading": "Hvor mange boenheter skal bygningen ha?",
+          "text": "<p>Antall boenheter avgjør blant annet hvilke brannregler som gjelder bygningen. Veiviseren dekker bare bygninger med én boenhet.</p>",
+          "options": [
+            {
+              "id": "boenheter.en",
+              "type": "Answer",
+              "heading": "Én",
+              "value": "en"
+            },
+            {
+              "id": "boenheter.flere",
+              "type": "Answer",
+              "heading": "Flere",
+              "value": "flere"
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "dekkerIkkeResult",
+          "show": { "field": "boenheter", "operator": "eq", "value": "flere" }
+        },
+        {
+          "id": "overTreEtasjer",
+          "property": "overTreEtasjer",
+          "type": "Radio",
+          "show": { "field": "boenheter", "operator": "required" },
+          "heading": "Skal bygningen ha mer enn tre etasjer?",
+          "text": "<p>Antall etasjer avgjør hvilke brannkrav som gjelder bygningen. Veiviseren dekker bare bygninger som har tre etasjer eller mindre.</p><p>Er du usikker på antall tellende etasjer, kan du se <a target=\"_blank\" href=\"https://dibk.no/byggereglene/byggteknisk-forskrift-tek17/6/6-1/\">TEK17 § 6-1</a>.</p>",
+          "options": [
+            {
+              "id": "overTreEtasjer.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "overTreEtasjer.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "dekkerIkkeResult",
+          "show": { "field": "overTreEtasjer", "operator": "eq", "value": true }
+        },
+        {
+          "id": "minst8meter",
+          "property": "minst8meter",
+          "type": "Radio",
+          "show": { "field": "overTreEtasjer", "operator": "required" },
+          "heading": "Blir det minst 8,0 meter til nærmeste bygning på naboeiendom?",
+          "text": "<p>Avstand til bygning på naboeiendom påvirker hvilke brannregler som gjelder. Denne veiviseren dekker bare bygninger som har minst 8,0 meter til nærmeste bygning på naboeiendom.</p>",
+          "options": [
+            {
+              "id": "minst8meter.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "minst8meter.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "dekkerIkkeResult",
+          "show": { "field": "minst8meter", "operator": "eq", "value": false }
+        },
+        {
+          "id": "dørRettUt",
+          "property": "dørRettUt",
+          "type": "Radio",
+          "show": { "field": "minst8meter", "operator": "required" },
+          "heading": "Får boligen utgangsdør rett ut på bakken?",
+          "text": "<p>Døra kan være forbundet med en trapp ned til bakken, dersom det maksimalt er halvannen meter ned fra dørstokken til bakken.</p><p>Boliger som ikke har dør rett ut på bakken har strengere brannkrav. Dette dekkes ikke av veiviseren.</p>",
+          "options": [
+            {
+              "id": "dørRettUt.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "dørRettUt.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "dekkerIkkeResult",
+          "show": { "field": "dørRettUt", "operator": "eq", "value": false }
+        }
+      ]
+    },
+    {
+      "id": "energi",
+      "type": "Page",
+      "heading": "Energi",
+      "show": { "field": "dørRettUt", "operator": "required" },
+      "children": [
+        {
+          "id": "areal",
+          "property": "areal",
+          "type": "Radio",
+          "heading": "Hvor mye oppvarmet areal skal boligen ha?",
+          "text": "<p>Krav til isolasjon og andre energikrav bestemmes ut fra hvor mye oppvarmet bruksareal (BRA) boligen får.</p><p>Oppvarmet BRA er areal innenfor klimaskallet (boligens isolerte vegger). Alt utenfor klimaskallet, slik som utvendige boder og garasjer, telles ikke med i oppvarmet BRA. Hvis du er i tvil om et areal er oppvarmet BRA kan du finne mer informasjon i NS 3031:2014.</p>",
+          "options": [
+            {
+              "id": "areal.under70",
+              "type": "Answer",
+              "heading": "BRA under 70 m²",
+              "value": "under70"
+            },
+            {
+              "id": "areal.over70",
+              "type": "Answer",
+              "heading": "BRA over 70 m²",
+              "value": "over70",
+              "show": { "field": "typeBolig", "operator": "eq", "value": "helårsbolig" }
+            },
+            {
+              "id": "areal.mellom70og150",
+              "type": "Answer",
+              "heading": "BRA mellom 70-150 m²",
+              "value": "mellom70og150",
+              "show": { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" }
+            },
+            {
+              "id": "areal.over150",
+              "type": "Answer",
+              "heading": "BRA over 150 m²",
+              "value": "over150",
+              "show": { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" }
+            }
+          ]
+        },
+        {
+          "id": "fritidOver150Result",
+          "type": "Result",
+          "heading": "Schwær hytte",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
+              { "field": "areal", "operator": "eq", "value": "over150" }
+            ]
+          }
+        },
+        {
+          "id": "fritid70til150Result",
+          "type": "Result",
+          "heading": "Medium hytte",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
+              { "field": "areal", "operator": "eq", "value": "mellom70og150" }
+            ]
+          }
+        },
+        {
+          "id": "fritidUnder70Result",
+          "type": "Result",
+          "heading": "Liten hytte",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tilgjengelighet",
+      "type": "Page",
+      "heading": "Tilgjengelighet",
+      "show": { "field": "areal", "operator": "required" },
+      "children": [
+        {
+          "id": "tilgjengelig",
+          "property": "tilgjengelig",
+          "type": "Radio",
+          "heading": "Skal boligen være tilgjengelig?",
+          "text": "<p>Er du usikker, hjelper vi deg å finne ut om det er krav til tilgjengelighet.</p>",
+          "options": [
+            {
+              "id": "tilgjengelig.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": "ja"
+            },
+            {
+              "id": "tilgjengelig.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": "nei"
+            },
+            {
+              "id": "tilgjengelig.usikker",
+              "type": "Answer",
+              "heading": "Usikker",
+              "value": "usikker"
+            }
+          ]
+        },
+        {
+          "id": "helårsUnder70UtilgjengeligResult",
+          "type": "Result",
+          "heading": "Utilgjengelig helårs, < 70 m²",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "tilgjengelig", "operator": "eq", "value": "nei" },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        },
+        {
+          "id": "helårsOver70UtilgjengeligResult",
+          "type": "Result",
+          "heading": "Utilgjengelig helårs, > 70 m²",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "tilgjengelig", "operator": "eq", "value": "nei" },
+              { "field": "areal", "operator": "eq", "value": "over70" }
+            ]
+          }
+        },
+        {
+          "id": "helårsUnder70TilgjengeligResult",
+          "type": "Result",
+          "heading": "Tilgjengelig helårs, < 70 m²",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "tilgjengelig", "operator": "eq", "value": "ja" },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        },
+        {
+          "id": "helårsOver70TilgjengeligResult",
+          "type": "Result",
+          "heading": "Tilgjengelig helårs, > 70 m²",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "tilgjengelig", "operator": "eq", "value": "ja" },
+              { "field": "areal", "operator": "eq", "value": "over70" }
+            ]
+          }
+        },
+        {
+          "id": "kravIPlan",
+          "property": "kravIPlan",
+          "type": "Radio",
+          "show": { "field": "tilgjengelig", "operator": "required" },
+          "heading": "Er det krav om tilgjengelighet i plan?",
+          "text": "<p>Er du usikker på hvordan å forstå reguleringsplan eller andre planer, bør du kontakte kommunen.</p>",
+          "options": [
+            {
+              "id": "kravIPlan.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "kravIPlan.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsUnder70TilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "kravIPlan", "operator": "eq", "value": true },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsOver70TilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "kravIPlan", "operator": "eq", "value": true },
+              { "field": "areal", "operator": "eq", "value": "over70" }
+            ]
+          }
+        },
+        {
+          "id": "hovedfunksjonerPåInngangsplan",
+          "property": "hovedfunksjonerPåInngangsplan",
+          "type": "Radio",
+          "heading": "Skal boligen ha alle hovedfunksjoner på inngangsplanet?",
+          "text": "<p>Inngangsplanet skal være tilgjengelig hvis det har alle hovedfunksjoner. Med hovedfunksjoner menes stue, kjøkken, soverom, bad og toalett. Er du usikker kan du lese mer i <a href=\"https://dibk.no/byggereglene/byggteknisk-forskrift-tek17/12/i/12-2/\" target=\"_blank\">TEK17 § 12-2</a> annet ledd.</p>",
+          "show": { "field": "kravIPlan", "operator": "required" },
+          "options": [
+            {
+              "id": "hovedfunksjonerPåInngangsplan.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "hovedfunksjonerPåInngangsplan.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsUnder70UtilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "hovedfunksjonerPåInngangsplan", "operator": "eq", "value": false },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsOver70UtilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "hovedfunksjonerPåInngangsplan", "operator": "eq", "value": false },
+              { "field": "areal", "operator": "eq", "value": "over70" }
+            ]
+          }
+        },
+        {
+          "id": "forBratt",
+          "property": "forBratt",
+          "type": "Radio",
+          "heading": "Er terrenget for bratt til å lage trinnfri adkomst?",
+          "text": "<p>Er terrenget for bratt til at det er mulig å oppfylle kravet til trinnfri gangadkomst, gjelder likevel ikke kravene om tilgjengelighet. Er du usikker kan du lese mer i <a href=\"https://dibk.no/byggereglene/byggteknisk-forskrift-tek17/8/8-5/\" target=\"_blank\">TEK17 § 8-5</a>.</p>",
+          "show": { "field": "hovedfunksjonerPåInngangsplan", "operator": "required" },
+          "options": [
+            {
+              "id": "forBratt.ja",
+              "type": "Answer",
+              "heading": "Ja",
+              "value": true
+            },
+            {
+              "id": "forBratt.nei",
+              "type": "Answer",
+              "heading": "Nei",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsUnder70UtilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "forBratt", "operator": "eq", "value": true },
+              { "field": "areal", "operator": "eq", "value": "under70" }
+            ]
+          }
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsOver70UtilgjengeligResult",
+          "show": {
+            "type": "and",
+            "clauses": [
+              { "field": "forBratt", "operator": "eq", "value": true },
+              { "field": "areal", "operator": "eq", "value": "over70" }
+            ]
+          }
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsUnder70TilgjengeligResult",
+          "show": { "field": "areal", "operator": "eq", "value": "under70" }
+        },
+        {
+          "type": "Reference",
+          "nodeId": "helårsOver70TilgjengeligResult",
+          "show": { "field": "areal", "operator": "eq", "value": "over70" }
+        }
+      ]
+    }
+  ]
+}
