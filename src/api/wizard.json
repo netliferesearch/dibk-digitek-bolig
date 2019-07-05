@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "DigiTEK - enebolig og fritidsbolig",
-    "footer": "Pilot på regelveiviser for deg som skal bygge enebolig eller fritidsbolig"
+    "title": "Pilot - TEK17 for boliger",
+    "footer": "Pilot for deg som skal bygge enebolig eller fritidsbolig"
   },
   "schema": [
     {
       "id": "about",
       "type": "Page",
-      "heading": "Om boligen",
+      "heading": "Om bygningen",
       "children": [
         {
           "id": "onlyResidence",
@@ -34,23 +34,8 @@
           "id": "dekkerIkkeResult",
           "type": "Result",
           "show": { "field": "onlyResidence", "operator": "eq", "value": false },
-          "heading": "💃 Dekker ikke 🕺",
-          "lead": "<p>yo. you can use <a target=\"_blank\" href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">dem linkz</a></p><p>Et avsnitt til her</p>",
-          "children": [
-            {
-              "id": "infoGroup",
-              "type": "Group",
-              "simple": true,
-              "children": [
-                {
-                  "id": "infoText",
-                  "type": "Text",
-                  "heading": "Viktig informasjon",
-                  "text": "<p>Viktig informasjon og sånt.</p>"
-                }
-              ]
-            }
-          ]
+          "heading": "Bygningen dekkes ikke av veiviseren",
+          "lead": "<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise fram regelverket på. Vi dekker derfor kun et utvalg av helårsboliger og fritidsboliger i denne omgang.</p><p>Du kan se hva du har svart i oversikten under. Der kan du også endre svarene dine.</p>"
         },
         {
           "id": "typeBolig",
@@ -171,8 +156,8 @@
           "property": "dørRettUt",
           "type": "Radio",
           "show": { "field": "minst8meter", "operator": "required" },
-          "heading": "Får boligen utgangsdør rett ut på bakken?",
-          "text": "<p>Døra kan være forbundet med en trapp ned til bakken, dersom det maksimalt er halvannen meter ned fra dørstokken til bakken.</p><p>Boliger som ikke har dør rett ut på bakken har strengere brannkrav. Dette dekkes ikke av veiviseren.</p>",
+          "heading": "Får boligen utgang direkte til bakkeplan?",
+          "text": "<p>Fra utgangsdør kan det være en trapp <u>ned</u> til bakken. Det kan være maksimalt halvannen meter ned fra dørstokken til bakken.</p><p>Boliger som ikke har utgang direkte til bakkeplan har strengere brannkrav. Dette dekkes ikke av veiviseren.</p>",
           "options": [
             {
               "id": "dørRettUt.ja",
@@ -206,7 +191,7 @@
           "property": "areal",
           "type": "Radio",
           "heading": "Hvor mye oppvarmet areal skal boligen ha?",
-          "text": "<p>Krav til isolasjon og andre energikrav bestemmes ut fra hvor mye oppvarmet bruksareal (BRA) boligen får.</p><p>Oppvarmet BRA er areal innenfor klimaskallet (boligens isolerte vegger). Alt utenfor klimaskallet, slik som utvendige boder og garasjer, telles ikke med i oppvarmet BRA. Hvis du er i tvil om et areal er oppvarmet BRA kan du finne mer informasjon i NS 3031:2014.</p>",
+          "text": "<p>Krav til isolasjon og andre energikrav bestemmes ut fra hvor mye oppvarmet bruksareal (BRA) boligen får.</p><p>Oppvarmet BRA er areal innenfor klimaskallet (boligens isolerte vegger). Alt utenfor klimaskallet, slik som utvendige boder og garasjer, telles ikke med i oppvarmet BRA. </p><p>Er du i tvil om et areal regnes som oppvarmet BRA, kan du finne mer informasjon i NS 3031:2014.</p>",
           "options": [
             {
               "id": "areal.under70",
@@ -240,41 +225,93 @@
         {
           "id": "fritidOver150Result",
           "type": "Result",
-          "heading": "Schwær hytte",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
               { "field": "areal", "operator": "eq", "value": "over150" }
             ]
-          }
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Regler for fritidsbolig over 150 m²",
+                  "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det ikke krav om tilgjengelighet eller heis</lil><li>har vi markert relevante energikrav for fritidsboliger over 150 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_fritidsbolig_over_150_kvm_uten_laft.pdf\" target=\"_blank\">Regler for fritidsbolig over 150 m² (PDF)</a></li><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_fritidsbolig_over_150_kvm_med_laft.pdf\" target=\"_blank\">Regler for fritidsbolig over 150 m² med laftede yttervegger (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge. Det samme gjelder hvis boligen er beregnet for mer enn 86 personer.</p>"
+                },
+                {
+                  "id": "Feedback",
+                  "type": "Group",
+                  "heading": "Gi oss en tilbakemelding!",
+                  "text":"<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "fritid70til150Result",
           "type": "Result",
-          "heading": "Medium hytte",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
               { "field": "areal", "operator": "eq", "value": "mellom70og150" }
             ]
-          }
-        },
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoText",
+              "type": "Group",
+              "heading": "Regler for fritidsbolig mellom 70 og 150 m²",
+              "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det ikke krav om tilgjengelighet eller heis</li><li>har vi markert relevante energikrav for fritidsboliger mellom 70 og 150 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li> <a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_fritidsbolig_mellom_70_og_150_kvm_uten_laft.pdf\" target=\"_blank\">Regler for fritidsbolig mellom 70 og 150 m² (PDF)<a/></li><li> <a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_fritidsbolig_mellom_70_og_150_kvm_med_laft.pdf\" target=\"_blank\">Regler for fritidsbolig mellom 70 og 150 m² med laftede yttervegger (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge.</p>"
+            },
+            {
+              "id": "Feedback",
+              "type": "Group",
+              "heading": "Gi oss en tilbakemelding!",
+              "text":"<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+            }
+          ]
+        }
+      ]
+    },
         {
           "id": "fritidUnder70Result",
           "type": "Result",
-          "heading": "Liten hytte",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "typeBolig", "operator": "eq", "value": "fritidsbolig" },
               { "field": "areal", "operator": "eq", "value": "under70" }
             ]
-          }
-        }
-      ]
-    },
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoText",
+              "type": "Group",
+              "heading": "Regler for fritidsbolig under 70 m²",
+              "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det ikke krav om tilgjengelighet eller heis</li><li>er fritidsboligen under 70 m² og derfor unntatt alle energikrav</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Det gjelder samme krav uavhengig om du bygger i laft eller ikke.<ul><li> <a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_fritidsbolig_under_70_kvm.pdf\" target=\"_blank\">Regler for fritidsbolig under 70 m² (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge.</p>"
+            },
+            {
+              "id": "Feedback",
+              "type": "Group",
+              "heading": "Gi oss en tilbakemelding!",
+              "text":"<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+            }
+          ]
+        },
     {
       "id": "tilgjengelighet",
       "type": "Page",
@@ -286,7 +323,7 @@
           "property": "tilgjengelig",
           "type": "Radio",
           "heading": "Skal boligen være tilgjengelig?",
-          "text": "<p>Er du usikker, hjelper vi deg å finne ut om det er krav til tilgjengelighet.</p>",
+          "text": "<p>Er du usikker på om boligen må være tilgjengelig, får du hjelp til å finne det ut.</p>",
           "options": [
             {
               "id": "tilgjengelig.ja",
@@ -297,13 +334,13 @@
             {
               "id": "tilgjengelig.nei",
               "type": "Answer",
-              "heading": "Nei",
+              "heading": "Nei, ingen krav om tilgjengelighet",
               "value": "nei"
             },
             {
               "id": "tilgjengelig.usikker",
               "type": "Answer",
-              "heading": "Usikker",
+              "heading": "Usikker på om det er krav",
               "value": "usikker"
             }
           ]
@@ -311,58 +348,147 @@
         {
           "id": "helårsUnder70UtilgjengeligResult",
           "type": "Result",
-          "heading": "Utilgjengelig helårs, < 70 m²",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "tilgjengelig", "operator": "eq", "value": "nei" },
               { "field": "areal", "operator": "eq", "value": "under70" }
             ]
-          }
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Group",
+                  "heading": "Regler for helårsbolig under 70 m² som ikke skal være tilgjengelig",
+                  "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det ikke krav om tilgjengelighet eller heis</li><li>har vi markert energikravene for bygninger under 70 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_ikke_tilgjengelig_helaarsbolig_under_70_kvm_uten_laft.pdf\" target=\"_blank\"> Regler for ikke-tilgjengelig helårsbolig under 70 m² (PDF)</a></li><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_ikke_tilgjengelig_helaarsbolig_under_70_kvm_med_laft.pdf\" target=\"_blank\"> Regler for ikke-tilgjengelig helårsbolig under 70 m² med laftede yttervegger (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge.</p>"
+                },
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Gi oss en tilbakemelding!",
+                  "text": "<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "helårsOver70UtilgjengeligResult",
           "type": "Result",
-          "heading": "Utilgjengelig helårs, > 70 m²",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "tilgjengelig", "operator": "eq", "value": "nei" },
               { "field": "areal", "operator": "eq", "value": "over70" }
             ]
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoText",
+              "type": "Group",
+              "heading": "Regler for helårsbolig over 70 m² som ikke skal være tilgjengelig",
+              "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det ikke krav om tilgjengelighet eller heis</li><li>har vi markert energikravene for bygninger over 70 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_ikke_tilgjengelig_helaarsbolig_over_70_kvm_uten_laft.pdf\" target=\"_blank\"> Regler for ikke-tilgjengelig helårsbolig over 70 m² </a>(PDF)</li><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_ikke_tilgjengelig_helaarsbolig_over_70_kvm_med_laft.pdf\" target=\"_blank\"> Regler for ikke-tilgjengelig helårsbolig over 70 m² med laftede yttervegger </a>(PDF)</li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge. Det samme gjelder hvis boligen er beregnet for mer enn 86 personer.</p>"
+            },
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Gi oss en tilbakemelding!",
+                  "text": "<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+                }
+              ]
           }
+          ]
         },
         {
           "id": "helårsUnder70TilgjengeligResult",
           "type": "Result",
-          "heading": "Tilgjengelig helårs, < 70 m²",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "tilgjengelig", "operator": "eq", "value": "ja" },
               { "field": "areal", "operator": "eq", "value": "under70" }
             ]
-          }
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoText",
+              "type": "Group",
+              "heading": "Regler for helårsbolig under 70 m² som skal være tilgjengelig",
+              "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det krav om tilgjengelig inngangsplan</li><li>er det ikke krav om heis</li><li>har vi markert energikravene for bygninger under 70 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_tilgjengelig_helaarsbolig_under_70_kvm_uten_laft.pdf\" target=\"_blank\"> Regler for tilgjengelig helårsbolig under 70 m² (PDF)</a></li><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_tilgjengelig_helaarsbolig_under_70_kvm_med_laft.pdf\" target=\"_blank\"> Regler for tilgjengelig helårsbolig under 70 m² med laftede yttervegger (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge. Det samme gjelder hvis boligen er beregnet for mer enn 86 personer.</p>"
+            },
+
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Gi oss en tilbakemelding!",
+                  "text": "<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "helårsOver70TilgjengeligResult",
           "type": "Result",
-          "heading": "Tilgjengelig helårs, > 70 m²",
+          "heading": "Resultat",
           "show": {
             "type": "and",
             "clauses": [
               { "field": "tilgjengelig", "operator": "eq", "value": "ja" },
               { "field": "areal", "operator": "eq", "value": "over70" }
             ]
-          }
+          },
+          "lead": "",
+          "children": [
+            {
+              "id": "infoText",
+              "type": "Group",
+              "heading": "Regler for helårsbolig over 70 m² som skal være tilgjengelig",
+              "text": "<p>Her finner du de reglene i byggteknisk forskrift (TEK17) som <u>kan</u> være relevante for boligen du skal bygge. All relevant forskriftstekst og veiledningstekst er markert med gult. Basert på dine svar: <ul><li>er det krav om tilgjengelig inngangsplan</li><li>er det ikke krav om heis</li><li>har vi markert energikravene for bygninger over 70 m²</li><li>gjelder brannreglene for boliger i brannklasse 1 og risikoklasse 4</li></ul></p><h3>Last ned regler</h3><p>Du kan laste ned en versjon for vanlig bolig, og en for laftet bolig.<ul><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_tilgjengelig_helaarsbolig_over_70_kvm_uten_laft.pdf\" target=\"_blank\"> Regler for tilgjengelig helårsbolig over 70 m² (PDF)</a></li><li><a href=\"https://dibk.no/globalassets/2.-verktoy-og-veivisere/boligpilot/Regler_for_tilgjengelig_helaarsbolig_over_70_kvm_med_laft.pdf\" target=\"_blank\"> Regler for tilgjengelig helårsbolig over 70 m² med laftede yttervegger (PDF)</a></li></ul></p><p>Vær oppmerksom på at det kan være stilt krav i reguleringsplan og andre kommunale planer som kan påvirke hvordan du kan bygge. Det samme gjelder hvis boligen er beregnet for mer enn 86 personer.</p>"
+            },
+            {
+              "id": "infoGroup",
+              "type": "Group",
+              "simple": true,
+              "children": [
+                {
+                  "id": "infoText",
+                  "type": "Text",
+                  "heading": "Gi oss en tilbakemelding!",
+                  "text": "<p>Dette er et et pilotprosjekt hvor vi tester ut nye måter å vise frem regelverket på. Vi håper du kan <a target=\"_blank\" href=\"https://response.questback.com/dibk/bolig_tilbakemelding\">gi oss en tilbakemelding</a> etter å ha testet ut PDFen. Dette vil hjelpe oss å evaluere pilotprosjektet, og finne om dette er nyttig.</p>"
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "kravIPlan",
           "property": "kravIPlan",
           "type": "Radio",
           "show": { "field": "tilgjengelig", "operator": "required" },
-          "heading": "Er det krav om tilgjengelighet i plan?",
-          "text": "<p>Er du usikker på hvordan å forstå reguleringsplan eller andre planer, bør du kontakte kommunen.</p>",
+          "heading": "Er det krav om tilgjengelighet i kommunale planer?",
+          "text": "<p>Det kan finnes tilgjengelighetskrav i kommuneplan, kommunedelplan eller reguleringsplan. Kommunen kan hjelpe deg å forstå disse kravene.</p>",
           "options": [
             {
               "id": "kravIPlan.ja",
@@ -405,7 +531,7 @@
           "property": "hovedfunksjonerPåInngangsplan",
           "type": "Radio",
           "heading": "Skal boligen ha alle hovedfunksjoner på inngangsplanet?",
-          "text": "<p>Inngangsplanet skal være tilgjengelig hvis det har alle hovedfunksjoner. Med hovedfunksjoner menes stue, kjøkken, soverom, bad og toalett. Er du usikker kan du lese mer i <a href=\"https://dibk.no/byggereglene/byggteknisk-forskrift-tek17/12/i/12-2/\" target=\"_blank\">TEK17 § 12-2</a> annet ledd.</p>",
+          "text": "<p>Inngangsplanet skal være tilgjengelig hvis det inneholder alle hovedfunksjoner. Med hovedfunksjoner menes stue, kjøkken, soverom, bad og toalett. Er du usikker kan du lese mer i <a href=\"https://dibk.no/byggereglene/byggteknisk-forskrift-tek17/12/i/12-2/\" target=\"_blank\">TEK17 § 12-2</a> annet ledd.</p>",
           "show": { "field": "kravIPlan", "operator": "required" },
           "options": [
             {
@@ -455,7 +581,7 @@
             {
               "id": "forBratt.ja",
               "type": "Answer",
-              "heading": "Ja",
+              "heading": "Ja, det er for bratt",
               "value": true
             },
             {

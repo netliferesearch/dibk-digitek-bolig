@@ -13,15 +13,13 @@ function Intro({ close, data: { $computed, ...data } }) {
       <IntroMain>
         <Primitives.Heading.H1>Skal du bygge enebolig eller hytte?</Primitives.Heading.H1>
         <Primitives.Paragraphs.Lead>
-          Vi tester ut en ny måte å vise frem regelverket på. Målet er å gjøre det enklere å finne hvilke
-          byggtekniske krav som gjelder vanlige eneboliger og hytter. Relevante krav i byggteknisk forskrift
-          (TEK17) blir gulet ut. Du slipper derfor å lese hele forskriften og veiledningen for å finne ut
-          hvilke krav som gjelder.
+          Svar på noen spørsmål og test ut vår nye måte å vise frem relevant regelverk på. Kun forskriftstekst og veiledningstekst i TEK17 som kan være relevant for det du skal bygge blir markert. Det blir dermed mindre å sette seg inn i. 
         </Primitives.Paragraphs.Lead>
-        <Primitives.Paragraphs.P>
-          For å finne ut om det du skal bygge dekkes av veiviseren, må du svare på noen spørsmål om boligen.
-          Svarene dine gir deg reglene for boligen du vil bygge.
-        </Primitives.Paragraphs.P>
+        <Primitives.Paragraphs.Lead>
+        Pilotprosjektet dekker kun vanlige eneboliger og hytter. Dekker veiviseren det du vil bygge, får du en PDF der kun relevante krav for boligen du vil bygge er fremhevet. 
+
+
+        </Primitives.Paragraphs.Lead>
         <Primitives.Button.MainButton type="button" onClick={() => close()}>
           Start veiviseren
         </Primitives.Button.MainButton>
